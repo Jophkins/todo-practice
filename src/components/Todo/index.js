@@ -1,5 +1,11 @@
 import {useState} from "react";
 
+import styles from "./Todo.module.scss";
+
+import TasksCounter from "./TasksCounter";
+import TasksAddForm from "./TasksAddForm";
+import Tasks from "./Tasks";
+
 const Todo = () => {
   const [tasks, setTasks] = useState([
     {
@@ -14,23 +20,11 @@ const Todo = () => {
     }
   ]);
 
-  const completedTasks = tasks.filter(item => item.isDone === true);
-
   return (
-    <div className="Todo">
-      <div className="TasksCounter">
-        <h1>Tasks count: '{tasks.length}' | Completed: '{completedTasks.length}'</h1>
-      </div>
-      <div className="TaskAddForm">
-        <form>
-          <input type="text"/>
-          <button>Add</button>
-        </form>
-      </div>
-      <div className="tasks">
-        {tasks[0].text}
-        {tasks[1].text}
-      </div>
+    <div className={styles.todo}>
+      <TasksCounter tasks={tasks} />
+      <TasksAddForm />
+      <Tasks tasks={tasks} />
     </div>
   )
 }
