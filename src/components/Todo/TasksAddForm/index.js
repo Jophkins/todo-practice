@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 
-const TasksAddForm = () => {
+const TasksAddForm = ({ addTask }) => {
 
   const [userInput, setUserInput] = useState('');
 
@@ -11,6 +11,7 @@ const TasksAddForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    addTask(userInput);
     setUserInput('')
   }
 

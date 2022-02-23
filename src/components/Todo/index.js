@@ -20,10 +20,21 @@ const Todo = () => {
     }
   ]);
 
+  const addTask = (userInput) => {
+    if (userInput) {
+      const newTask = {
+        id: Math.random().toString(36).substr(2, 9),
+        text: userInput,
+        complete: false
+      };
+      setTasks([...tasks, newTask]);
+    }
+  }
+
   return (
     <div className={styles.todo}>
       <TasksCounter tasks={tasks} />
-      <TasksAddForm />
+      <TasksAddForm addTask={addTask} />
       {tasks.map(task => {
         return(
           <Tasks key={task.id} task={task} />
