@@ -1,11 +1,12 @@
-import TasksItem from "./TasksItem";
 
 
-const Tasks = ({ tasks }) => {
+const Tasks = ({ task }) => {
 
   return(
     <div className="tasks">
-      <TasksItem tasks={tasks} />
+      <div className="tasks-item">
+        {task.text}
+      </div>
     </div>
   )
 }

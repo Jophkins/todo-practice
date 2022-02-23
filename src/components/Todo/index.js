@@ -24,7 +24,11 @@ const Todo = () => {
     <div className={styles.todo}>
       <TasksCounter tasks={tasks} />
       <TasksAddForm />
-      <Tasks tasks={tasks} />
+      {tasks.map(task => {
+        return(
+          <Tasks key={task.id} task={task} />
+        )
+      })}
     </div>
   )
 }
