@@ -25,10 +25,18 @@ const Todo = () => {
       const newTask = {
         id: Math.random().toString(36).substr(2, 9),
         text: userInput,
-        complete: false
+        isDone: false
       };
       setTasks([...tasks, newTask]);
     }
+  }
+
+  const isDoneToggle = (id) => {
+    setTasks([
+      ...tasks.map((task) => {
+        return task.id === id ? { ...task, isDone: !task.isDone } : { ...task };
+      })
+    ]);
   }
 
   return (
@@ -37,7 +45,7 @@ const Todo = () => {
       <TasksAddForm addTask={addTask} />
       {tasks.map(task => {
         return(
-          <Tasks key={task.id} task={task} />
+          <Tasks key={task.id} task={task} isDoneToggle={isDoneToggle} />
         )
       })}
     </div>
