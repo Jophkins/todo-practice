@@ -24,7 +24,7 @@ const TasksAddForm = ({ addTask }) => {
   return(
     <div className="taskAddForm">
       <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} onKeyDown={handleKeyPress} type="text" value={userInput} placeholder="Task text here"/>
+        <input onChange={handleChange} onKeyDown={handleKeyPress} type="text" value={userInput} placeholder="Task text here" maxLength="40"/>
         <button>Add</button>
       </form>
     </div>

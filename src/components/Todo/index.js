@@ -31,6 +31,10 @@ const Todo = () => {
     }
   }
 
+  const removeTask = (id) => {
+    setTasks([...tasks.filter((task) => task.id !== id)]);
+  }
+
   const isDoneToggle = (id) => {
     setTasks([
       ...tasks.map((task) => {
@@ -45,7 +49,7 @@ const Todo = () => {
       <TasksAddForm addTask={addTask} />
       {tasks.map(task => {
         return(
-          <Tasks key={task.id} task={task} isDoneToggle={isDoneToggle} />
+          <Tasks key={task.id} task={task} isDoneToggle={isDoneToggle} removeTask={removeTask} />
         )
       })}
     </div>

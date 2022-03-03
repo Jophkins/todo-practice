@@ -1,0 +1,26 @@
+.tasksItem {
+  margin: 2px;
+  padding: 10px;
+  border-radius: 8px;
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  transition: 0.5s all;
+}
+
+.tasksItem:hover {
+  background-color: yellow;
+}
+
+.checkBox {
+  align-self: center;
+}
+
+.crossSign {
+  cursor: pointer;
+  transition: 0.2s all;
+}
+
+.crossSign:hover {
+  transform: rotate(90deg);
+}
