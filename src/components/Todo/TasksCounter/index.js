@@ -1,12 +1,11 @@
-
-
-const TasksCounter = ({ tasks }) => {
+const TasksCounter = ({tasks}) => {
 
   const completedTasks = tasks.filter(item => item.isDone === true);
 
   return (
     <div className="tasksCounter">
-      <h1>Tasks count: '{tasks.length}' | Completed: '{completedTasks.length}'</h1>
+      <h1>Tasks count: '{(tasks.length) ? (tasks.length) : "Loading..."}' | Completed:
+        '{(tasks.length) ? (completedTasks.length) : "Loading..."}'</h1>
     </div>
   )
 }

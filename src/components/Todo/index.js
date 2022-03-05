@@ -1,4 +1,5 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import axios from "axios";
 
 import styles from "./Todo.module.scss";
 
@@ -7,18 +8,11 @@ import TasksAddForm from "./TasksAddForm";
 import Tasks from "./Tasks";
 
 const Todo = () => {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      text: 'juliano',
-      isDone: true
-    },
-    {
-      id: 2,
-      text: 'mimimichaela',
-      isDone: false
-    }
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/tasks').then(({data}) => setTasks(data));
+  }, []);
 
   const addTask = (userInput) => {
     if (userInput) {
