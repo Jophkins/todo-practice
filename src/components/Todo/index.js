@@ -16,12 +16,19 @@ const Todo = () => {
 
   const addTask = (userInput) => {
     if (userInput) {
-      const newTask = {
+      axios.post('http://localhost:3001/tasks', {
         id: Math.random().toString(36).substr(2, 9),
         text: userInput,
         isDone: false
-      };
-      setTasks([...tasks, newTask]);
+      }).then(({ data }) => {
+        console.log(data);
+        const newTask = {
+          id: data.id,
+          text: data.text,
+          isDone: data.isDone
+        };
+        setTasks([...tasks, newTask]);
+      });
     }
   }
 
