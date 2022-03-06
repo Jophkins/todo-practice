@@ -20,8 +20,7 @@ const Todo = () => {
         id: Math.random().toString(36).substr(2, 9),
         text: userInput,
         isDone: false
-      }).then(({ data }) => {
-        console.log(data);
+      }).then(({data}) => {
         const newTask = {
           id: data.id,
           text: data.text,
@@ -33,24 +32,28 @@ const Todo = () => {
   }
 
   const removeTask = (id) => {
-    setTasks([...tasks.filter((task) => task.id !== id)]);
+    if (window.confirm('Are you sure?')) {
+      axios.delete('http://localhost:3001/tasks/' + id).then(() => {
+        setTasks([...tasks.filter((task) => task.id !== id)]);
+      });
+    }
   }
 
   const isDoneToggle = (id) => {
     setTasks([
       ...tasks.map((task) => {
-        return task.id === id ? { ...task, isDone: !task.isDone } : { ...task };
+        return task.id === id ? {...task, isDone: !task.isDone} : {...task};
       })
     ]);
   }
 
   return (
     <div className={styles.todo}>
-      <TasksCounter tasks={tasks} />
-      <TasksAddForm addTask={addTask} />
+      <TasksCounter tasks={tasks}/>
+      <TasksAddForm addTask={addTask}/>
       {tasks.map(task => {
-        return(
-          <Tasks key={task.id} task={task} isDoneToggle={isDoneToggle} removeTask={removeTask} />
+        return (
+          <Tasks key={task.id} task={task} isDoneToggle={isDoneToggle} removeTask={removeTask}/>
         )
       })}
     </div>
