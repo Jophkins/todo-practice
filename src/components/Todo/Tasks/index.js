@@ -3,7 +3,7 @@ import styles from "./Tasks.module.scss";
 const Tasks = ({task, isDoneToggle, removeTask}) => {
 
   const checkHandler = () => {
-    isDoneToggle(task.id);
+    isDoneToggle(task.id, task.isDone);
   }
 
   const removeHandler = () => {

@@ -39,7 +39,10 @@ const Todo = () => {
     }
   }
 
-  const isDoneToggle = (id) => {
+  const isDoneToggle = (id, isDone) => {
+    axios.patch('http://localhost:3001/tasks/' + id, {
+      isDone: !isDone
+    });
     setTasks([
       ...tasks.map((task) => {
         return task.id === id ? {...task, isDone: !task.isDone} : {...task};
